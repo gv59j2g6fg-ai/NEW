@@ -240,8 +240,13 @@ function renderRow(r){
   chk.onchange=()=>{r.keep=chk.checked; markDirty();};
   tdKeep.appendChild(chk);
 
-  // Timer cell (only for time exercises)
-tr.appendChild(tdRemove);
+  // Remove row (draft only)
+  const tdRemove=document.createElement('td');
+  const rm=document.createElement('button'); rm.className='xbtn'; rm.type='button'; rm.textContent='✕'; rm.title='Remove from this day (draft)';
+  rm.onclick=()=>{ draft.rows = (draft.rows||[]).filter(x=>x.id!==r.id); markDirty(); renderWorkout(); };
+  tdRemove.appendChild(rm);
+
+  tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4); tr.appendChild(td5); tr.appendChild(td6); tr.appendChild(tdKeep); tr.appendChild(tdRemove);
   return tr;
 }
 

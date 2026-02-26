@@ -25,4 +25,7 @@
 
 .rirSelect{background: rgba(12,19,29,.9); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:10px 12px; color:var(--text); outline:none; width:100%; max-width:110px;}
 .keepChk{width:22px;height:22px;accent-color: var(--accent);}
+.timerBtn{padding:10px 10px;border-radius:12px;border:1px solid rgba(31,143,106,.6);background:rgba(31,143,106,.14);color:var(--text);font-weight:800}
+.timerBtn.danger{border-color:rgba(208,74,74,.6);background:rgba(208,74,74,.12)}
+.timerDisplay{font-variant-numeric: tabular-nums; font-weight:900;}
 .xbtn{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.15);color:var(--text);border-radius:12px;padding:8px 10px;font-size:16px;line-height:1}
