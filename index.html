@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+<meta name="theme-color" content="#0b0f14"/><meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/><meta name="apple-mobile-web-app-title" content="Workout"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+<link rel="manifest" href="manifest.webmanifest"/><title>Workout</title>
+<link rel="stylesheet" href="styles.css"/><script src="app.js" defer></script>
+</head><body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">W</div>
+    <div><div class="title">Workout</div><div class="subtitle">Strength • Fat Loss • Volume</div></div>
+  </div>
+
+  <div class="datebar">
+    <button class="iconbtn" id="prevDay">◀</button>
+    <input type="date" id="dateInput"/>
+    <button class="iconbtn" id="nextDay">▶</button>
+    <button class="ghost" id="todayBtn">Today</button>
+  </div>
+
+  <div class="row gap" style="margin-top:10px;align-items:center;flex-wrap:wrap">
+    <div class="pill" id="dayPill">Strength</div>
+
+    <select class="input" id="daySelect" style="max-width:180px;height:34px;padding:6px 10px;border-radius:999px">
+      <option value="strength">Strength</option>
+      <option value="fatloss">Fat Loss</option>
+      <option value="volume">Volume</option>
+    </select>
+
+    <div class="muted small" id="dayHint">Auto-rotates after you SAVE.</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="workout">Workout</button>
+    <button class="tab" data-tab="manage">Manage</button>
+    <button class="tab" data-tab="history">History</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="card" id="workoutCard">
+  <div class="cardhead">
+    <div class="cardtitle" id="dayTitle">Strength Day</div>
+    <div class="row gap">
+      <button class="btn danger" id="resetDraftBtn">Reset draft</button>
+      <button class="btn accent" id="saveBtn">💾 Save</button>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+    <table class="t">
+      <thead>
+        <tr>
+          <th style="width:24%">Exercise</th>
+          <th style="width:8%">Sets</th>
+          <th style="width:14%">Target</th>
+          <th style="width:12%">Weight</th>
+          <th style="width:10%">Pin</th>
+          <th style="width:10%">RIR</th>
+          <th style="width:10%">Keep</th>
+<th style="width:6%"></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="row gap" style="margin-top:12px;align-items:center;flex-wrap:wrap">
+    <button class="btn" id="addRowBtn">+ Add row</button>
+    <div class="spacer"></div>
+    <div class="muted small" id="draftStatus">Draft (not saved)</div>
+  </div>
+
+  <div class="note" id="note"></div>
+</section>
+
+<section class="card hidden" id="manageCard">
+  <div class="cardhead"><div class="cardtitle">Manage Exercises</div></div>
+  <div class="row gap" style="margin-top:10px">
+    <input class="input" id="newName" placeholder="New exercise name"/>
+    <select class="input" id="newType">
+      <option value="reps">Reps + Weight</option>
+      <option value="time">Time (seconds)</option>
+    </select>
+    <button class="btn" id="addExBtn">Add</button>
+  </div>
+  <div class="muted small" style="margin-top:8px">This saves immediately (exercise library).</div>
+  <div id="exList" class="list"></div>
+</section>
+
+<section class="card hidden" id="historyCard">
+  <div class="cardhead">
+    <div class="cardtitle">History</div>
+    <div class="row gap">
+      <select class="input" id="rangeSel">
+        <option value="14">Last 14 days</option>
+        <option value="30" selected>Last 30 days</option>
+        <option value="90">Last 90 days</option>
+        <option value="365">Last 365 days</option>
+      </select>
+      <input class="input" id="search" placeholder="Search (e.g. squat)"/>
+      <button class="btn" id="exportBtn">Export JSON</button>
+      <label class="btn">Import JSON<input id="importFile" type="file" accept="application/json" hidden></label>
+    </div>
+  </div>
+  <div id="histList" class="history"></div>
+</section>
+
+<footer class="footer">
+  <div>Offline-first. Data stays on your device.</div>
+  <div class="muted small">Build: v11d-timer-nosave</div>
+</footer>
+
+</main></body></html>
